@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom properties ───────────────────────────────────────────────────── */
+:root {
+  --bg:      #050810;
+  --surface: #0D1117;
+  --border:  #1c2128;
+  --accent:  #6366f1;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbars ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c2128;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #30363d;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1c2128 transparent;
+}
+
+/* ── Selection ────────────────────────────────────────────────────────────── */
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #f1f5f9;
+}
+
+/* ── Font ─────────────────────────────────────────────────────────────────── */
+code, pre, kbd, samp, .font-mono {
+  font-family: var(--font-mono, "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace);
+}
+
+/* ── Focus ring ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Utility ──────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .glow-indigo {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.25);
+  }
+  .glow-emerald {
+    box-shadow: 0 0 24px rgba(52, 211, 153, 0.25);
+  }
+  .glow-red {
+    box-shadow: 0 0 24px rgba(248, 113, 113, 0.25);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #6366f1 0%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-hero {
+    background: linear-gradient(135deg, #3b82f6 0%, #a855f7 50%, #3b82f6 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  @keyframes gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
